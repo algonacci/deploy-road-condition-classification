@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include "includes/head.html" %}
+
+  <body>
+    {% include "components/navbar.html" %}
+    <form action="/" enctype="multipart/form-data" method="post">
+      {% include "components/input_files.html" %}
+    </form>
+    {% include "includes/script.html" %} {% if result %}
+    <div class="container mt-5 pt-3">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="mb-3 d-flex justify-content-center">
+            <img src="{{ image_path }}" alt="" width="75%" />
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-body">
+              {% if result %}
+              <h5 class="card-title">Hasil Klasifikasi</h5>
+              <p class="card-text">
+                Nama Terdeteksi: <strong>{{ result }}</strong>
+                <br />
+                Akurasi: {{ confidence_score }}
+              </p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-3 mb-3">
+      <div class="col-6 text-center">
+        <div class="form-group">
+          <a href="/" class="btn btn-primary">Kembali ke halaman awal</a>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </body>
+</html>
